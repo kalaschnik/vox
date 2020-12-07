@@ -1,0 +1,27 @@
+{
+  "name": "gaze-following",
+  "version": "0.0.2",
+  "description": "A web-based experiment for gaze following.",
+  "main": "dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel serve ./src/index.html",
+    "build": "rm -rf dist && rm -rf .parcel-cache && parcel build ./src/index.html --public-url='./'"
+  },
+  "keywords": [
+    "vectorized",
+    "online",
+    "experiments",
+    "testing",
+    "psychology"
+  ],
+  "author": "Kalinke & Prein",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
+    "parcel": "^2.0.0-nightly.469"
+  }
+}
