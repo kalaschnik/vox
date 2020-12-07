@@ -1,5 +1,5 @@
-# gaze following
-> A use case for our new web-based plattform
+# VOX
+> Vectorized Online Experiments
 
 
 ### Local Development
