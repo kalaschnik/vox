@@ -8,8 +8,8 @@ const target = document.getElementById("target");
 const gazeCoords = getGazeCoords(target, pupil, eyeline);
 
 // pupil should be on intersection line / circle
-pupil.setAttribute("cx", gazeCoords[0]);
-pupil.setAttribute("cy", gazeCoords[1]);
+pupil.setAttribute("cx", gazeCoords.x);
+pupil.setAttribute("cy", gazeCoords.y);
 // iris too
-iris.setAttribute("cx", gazeCoords[0]);
-iris.setAttribute("cy", gazeCoords[1]);
+iris.setAttribute("cx", gazeCoords.x);
+iris.setAttribute("cy", gazeCoords.y);
