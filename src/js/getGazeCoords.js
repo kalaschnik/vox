@@ -31,6 +31,7 @@ export default (target, pupil, eyeline) => {
   // now, we replace y with our line equation (that we just calculated):
   // (x - eyelineCenterX)^2 + (intercept + slope * x - eyelineCenterY)^2 = maxEyeMovement^2
   // rearranging this formula leads to this looong formula. we get two separate solutions for both intersections
+  // (https://www.mathepower.com/freistell.php)
   const gazeX1 =
     Math.sqrt(
       (eyelineCenterX ** 2 * slope ** 2 +
