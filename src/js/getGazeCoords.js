@@ -2,21 +2,21 @@
 export default (target, pupil, eyeline) => {
   // first, get all elements that we need
   // get eyeline with eyeRadius
-  const eyeRadius = parseFloat(eyeline.getAttribute("r"), 10);
-  const eyelineCenterX = parseFloat(eyeline.getAttribute("cx"), 10);
-  const eyelineCenterY = parseFloat(eyeline.getAttribute("cy"), 10);
+  const eyeRadius = parseFloat(eyeline.getAttribute('r'), 10);
+  const eyelineCenterX = parseFloat(eyeline.getAttribute('cx'), 10);
+  const eyelineCenterY = parseFloat(eyeline.getAttribute('cy'), 10);
 
   // get pupil with pupilRadius
-  const pupilRadius = parseFloat(pupil.getAttribute("r"), 10);
+  const pupilRadius = parseFloat(pupil.getAttribute('r'), 10);
 
   // define max movement value for eye movement
   const maxEyeMovement = eyeRadius - pupilRadius / 2;
 
   // define target’s center point
-  const targetWidth = parseFloat(target.getAttribute("width"), 10);
-  const targetHeight = parseFloat(target.getAttribute("height"), 10);
-  const targetX = parseFloat(target.getAttribute("x"), 10);
-  const targetY = parseFloat(target.getAttribute("y"), 10);
+  const targetWidth = parseFloat(target.getAttribute('width'), 10);
+  const targetHeight = parseFloat(target.getAttribute('height'), 10);
+  const targetX = parseFloat(target.getAttribute('x'), 10);
+  const targetY = parseFloat(target.getAttribute('y'), 10);
   const targetCenterX = targetX + targetWidth / 2;
   const targetCenterY = targetY + targetHeight / 2;
 
@@ -32,44 +32,41 @@ export default (target, pupil, eyeline) => {
   // (x - eyelineCenterX)^2 + (intercept + slope * x - eyelineCenterY)^2 = maxEyeMovement^2
   // rearranging this formula leads to this looong formula. we get two separate solutions for both intersections
   // (https://www.mathepower.com/freistell.php)
-  const gazeX1 =
-    Math.sqrt(
-      (eyelineCenterX ** 2 * slope ** 2 +
-        2 * eyelineCenterX * intercept * slope -
-        2 * eyelineCenterX * eyelineCenterY * slope +
-        intercept ** 2 -
-        2 * intercept * eyelineCenterY +
-        eyelineCenterY ** 2 -
-        maxEyeMovement ** 2 * slope ** 2 -
-        maxEyeMovement ** 2) /
-        (-(slope ** 4) - 2 * slope ** 2 - 1)
-    ) +
-    (eyelineCenterX - intercept * slope + eyelineCenterY * slope) /
-      (slope ** 2 + 1);
+  const gazeX1 = Math.sqrt(
+    (eyelineCenterX ** 2 * slope ** 2
+        + 2 * eyelineCenterX * intercept * slope
+        - 2 * eyelineCenterX * eyelineCenterY * slope
+        + intercept ** 2
+        - 2 * intercept * eyelineCenterY
+        + eyelineCenterY ** 2
+        - maxEyeMovement ** 2 * slope ** 2
+        - maxEyeMovement ** 2)
+        / (-(slope ** 4) - 2 * slope ** 2 - 1),
+  )
+    + (eyelineCenterX - intercept * slope + eyelineCenterY * slope)
+      / (slope ** 2 + 1);
 
-const gazeX2 = 
-- Math.sqrt(
-    (eyelineCenterX ** 2 * slope ** 2 +
-      2 * eyelineCenterX * intercept * slope -
-      2 * eyelineCenterX * eyelineCenterY * slope +
-      intercept ** 2 -
-      2 * intercept * eyelineCenterY +
-      eyelineCenterY ** 2 -
-      maxEyeMovement ** 2 * slope ** 2 -
-      maxEyeMovement ** 2) /
-      (-(slope ** 4) - 2 * slope ** 2 - 1)
-  ) +
-  (eyelineCenterX - intercept * slope + eyelineCenterY * slope) /
-    (slope ** 2 + 1);
+  const gazeX2 = -Math.sqrt(
+    (eyelineCenterX ** 2 * slope ** 2
+        + 2 * eyelineCenterX * intercept * slope
+        - 2 * eyelineCenterX * eyelineCenterY * slope
+        + intercept ** 2
+        - 2 * intercept * eyelineCenterY
+        + eyelineCenterY ** 2
+        - maxEyeMovement ** 2 * slope ** 2
+        - maxEyeMovement ** 2)
+        / (-(slope ** 4) - 2 * slope ** 2 - 1),
+  )
+    + (eyelineCenterX - intercept * slope + eyelineCenterY * slope)
+      / (slope ** 2 + 1);
 
   // to get y coordinate of the wanted eye location, insert just calculated x value into the line equation
   const gazeY1 = slope * gazeX1 + intercept;
   const gazeY2 = slope * gazeX2 + intercept;
 
   // always choose the intersection with the higher y value (eye always looks down)
-  if(gazeY1 >= gazeY2) {
-      return {x: gazeX1, y: gazeY1}; 
-  } else {
-      return {x: gazeX2, y: gazeY2};
+  if (gazeY1 >= gazeY2) {
+    return { x: gazeX1, y: gazeY1 };
   }
+  return { x: gazeX2, y: gazeY2 };
 };
