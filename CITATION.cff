@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: 'If you use this software, please cite it using these metadata.'
+authors:
+  - family-names: Kalinke
+    given-names: Steven
+    orcid: https://orcid.org/0000-0002-3795-6829
+    affiliation: 'Max Planck Institute for Evolutionary Anthropology'
+    email: 'steven.kalinke@gmail.com'
+    website: http://www.eva.mpg.de/
+  - family-names: Thiede
+    given-names: Noemi
+    orcid: https://orcid.org/0000-0002-0192-1691
+    affiliation: 'Max Planck Institute for Evolutionary Anthropology'
+    email: 'noemi_thiede@eva.mpg.de'
+    website: http://www.eva.mpg.de/
+title: 'MATT — Moral Attitudes Study'
+abstract: 'tba'
+date-released: 2023-01-01
+doi: 'tba'
+keywords:
+  - 'culture, moral, moral attitude, online experiment'
+license: 'MIT'
+repository-code: 'https://github.com/ccp-eva/matt'
