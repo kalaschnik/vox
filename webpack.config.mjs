@@ -1,106 +1,86 @@
 // node packages
-import path from "path";
-import { fileURLToPath } from "url";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // webpack plugins
-import CopyPlugin from "copy-webpack-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import RemarkHTML from "remark-html";
+import CopyPlugin from 'copy-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const mode = process.env.NODE_ENV || "development"; // default to development
+const mode = process.env.NODE_ENV || 'development'; // default to development
 
 export default {
 	mode: mode,
-	entry: "./src/app.ts",
+	entry: './src/app.ts',
 	module: {
 		rules: [
 			{
 				test: /\.tsx?$/,
-				use: "ts-loader",
+				use: 'ts-loader',
 				exclude: /node_modules/,
 			},
 			{
 				test: /\.css$/,
 				use: [
 					{
-						loader: "style-loader",
+						loader: 'style-loader',
 					},
 					{
-						loader: "css-loader",
+						loader: 'css-loader',
 						options: {
 							importLoaders: 1,
 						},
-					},
-					{
-						loader: "postcss-loader",
 					},
 				],
 			},
 			{
 				test: /\.(png|gif|jpg|jpeg|ogg|mp3|wav|webm|mp4)$/i,
-				type: "asset/resource",
+				type: 'asset/resource',
 			},
 			{
 				test: /\.svg$/i,
-				type: "asset/source",
+				type: 'asset/source',
 				use: [
 					{
-						loader: "svgo-loader",
+						loader: 'svgo-loader',
 					},
 				],
 			},
-			{ test: /\.ya?ml$/, use: "yaml-loader" },
-			{
-				test: /\.md$/,
-				use: [
-					{
-						loader: "html-loader",
-					},
-					{
-						loader: "remark-loader",
-						options: {
-							remarkOptions: {
-								plugins: [RemarkHTML],
-							},
-						},
-					},
-				],
-			},
+			{ test: /\.ya?ml$/, use: 'yaml-loader' },
 		],
 	},
 	resolve: {
-		extensions: [".tsx", ".ts", ".js"],
+		extensions: ['.tsx', '.ts', '.js'],
 	},
 	output: {
-		filename: "bundle.js",
-		path: path.resolve(__dirname, "dist"),
+		filename: 'bundle.js',
+		path: path.resolve(__dirname, 'dist'),
 		clean: true, // todo: https://github.com/webpack/webpack-dev-middleware/issues/861 clean the dist folder before building
 	},
 	plugins: [
 		new CopyPlugin({
 			patterns: [
-				{ from: "public/", to: "./" },
-				{ from: "src/assets/", to: "./assets/" },
-				{ from: "src/cultures/", to: "./cultures/" },
+				{ from: 'public/', to: './' },
+				{ from: 'src/assets/', to: './assets/' },
+				{ from: 'src/cultures/', to: './cultures/' },
 			],
 		}),
 		new HtmlWebpackPlugin({
-			title: "Moral Attitudes Study",
-			filename: "app.html", // default: index.html
-			template: "./src/app.html",
+			title: 'Moral Attitudes Study',
+			filename: 'app.html', // default: index.html
+			template: './src/app.html',
 		}),
 	],
 
-	devtool: mode === "development" ? "inline-source-map" : false,
+	devtool: mode === 'development' ? 'inline-source-map' : false,
 	devServer: {
 		static: {
-			directory: path.join(__dirname, "./"), // that should point where you index.html is
+			directory: path.join(__dirname, './'), // that should point where you index.html is
 		},
 		// port: 3000,
-		open: { target: ["app.html"] },
+		open: { target: ['app.html'] },
 		hot: true, // enable hot reload
 		compress: true, // enable gzip compression
 		historyApiFallback: true, // enable HTML5 history API
