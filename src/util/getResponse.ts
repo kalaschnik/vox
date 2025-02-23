@@ -6,17 +6,23 @@ export const getResponse = (id?: string | string[]) => {
 		};
 
 		if (typeof id === 'string') {
-			document.getElementById(id)!.addEventListener('click', handleResponse, { once: true });
+			document
+				.getElementById(id)!
+				.addEventListener('click', handleResponse, { once: true });
 		}
 
 		if (Array.isArray(id)) {
 			id.forEach((id) => {
-				document.getElementById(id)!.addEventListener('click', handleResponse, { once: true });
+				document
+					.getElementById(id)!
+					.addEventListener('click', handleResponse, { once: true });
 			});
 		}
 
 		if (id === undefined) {
-			document.getElementById('wrapper')!.addEventListener('click', handleResponse, { once: true });
+			document
+				.getElementById('wrapper')!
+				.addEventListener('click', handleResponse, { once: true });
 		}
 	});
 };

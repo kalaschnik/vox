@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 import config from '../config.yaml';
-import { SvgInHtml } from '../types';
+import type { SvgInHtml } from '../types';
 import { play, playPromise } from '../util/audio';
 import { getResponse } from '../util/getResponse';
 import { swapSlides } from '../util/slideVisibility';
@@ -8,7 +8,7 @@ import { swapSlides } from '../util/slideVisibility';
 export const sAnimalCodeRunner = async (
 	currentSlide: string,
 	previousSlide: string,
-	animal: string
+	animal: string,
 ) => {
 	swapSlides(currentSlide, previousSlide);
 
@@ -16,8 +16,12 @@ export const sAnimalCodeRunner = async (
 
 	const audio = document.getElementById('audio') as HTMLMediaElement;
 	const animalPrefix = animal;
-	const yesButton = document.getElementById(`link-${animalPrefix}-yes`) as SvgInHtml;
-	const noButton = document.getElementById(`link-${animalPrefix}-no`) as SvgInHtml;
+	const yesButton = document.getElementById(
+		`link-${animalPrefix}-yes`,
+	) as SvgInHtml;
+	const noButton = document.getElementById(
+		`link-${animalPrefix}-no`,
+	) as SvgInHtml;
 
 	gsap.set([yesButton, noButton], { pointerEvents: 'none' });
 
@@ -53,7 +57,10 @@ export const sAnimalCodeRunner = async (
 		gsap.set([yesButton, noButton], { autoAlpha: 1, pointerEvents: 'visible' });
 	}
 
-	play(`./cultures/${data.culture}/audio/${animalPrefix}.mp3`, `link-${animalPrefix}-headphones`);
+	play(
+		`./cultures/${data.culture}/audio/${animalPrefix}.mp3`,
+		`link-${animalPrefix}-headphones`,
+	);
 
 	function handlePlay() {
 		yesButton.style.pointerEvents = 'none';
@@ -84,14 +91,20 @@ export const sAnimalCodeRunner = async (
 	if (data.animalSlideCounter <= config.globals.playAnimalResponseFeedback) {
 		if (response.id.includes('-yes')) {
 			const responseOption = ['ok', 'alright'];
-			const randomResponse = responseOption[Math.floor(Math.random() * responseOption.length)];
-			await playPromise(`./cultures/${data.culture}/audio/neutral-resp-${randomResponse}.mp3`);
+			const randomResponse =
+				responseOption[Math.floor(Math.random() * responseOption.length)];
+			await playPromise(
+				`./cultures/${data.culture}/audio/neutral-resp-${randomResponse}.mp3`,
+			);
 		}
 
 		if (response.id.includes('-no')) {
 			const responseOption = ['resp-no', 'resp-no-next'];
-			const randomResponse = responseOption[Math.floor(Math.random() * responseOption.length)];
-			await playPromise(`./cultures/${data.culture}/audio/animal-${randomResponse}.mp3`);
+			const randomResponse =
+				responseOption[Math.floor(Math.random() * responseOption.length)];
+			await playPromise(
+				`./cultures/${data.culture}/audio/animal-${randomResponse}.mp3`,
+			);
 		}
 	}
 };

@@ -13,7 +13,9 @@ async function createCoupon() {
 	const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
 	// Embed the Helvetica font
-	const helveticaFont = await pdfDoc.embedFont(StandardFonts.HelveticaBoldOblique);
+	const helveticaFont = await pdfDoc.embedFont(
+		StandardFonts.HelveticaBoldOblique,
+	);
 
 	// Get the first page of the document
 	const pages = pdfDoc.getPages();

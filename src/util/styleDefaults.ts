@@ -16,7 +16,7 @@ export const setScaleOnHover = () => {
 		if (elements) {
 			elements.forEach((e) => {
 				gsap.set(e, { transformOrigin: '50% 50%' });
-				let tween = gsap.to(e, {
+				const tween = gsap.to(e, {
 					scale: 1.2,
 					ease: 'none',
 					paused: true,
@@ -30,7 +30,12 @@ export const setScaleOnHover = () => {
 					});
 				});
 				e.addEventListener('mouseleave', () => {
-					gsap.to(tween, { duration: 0.1, time: 0, ease: 'none', overwrite: true });
+					gsap.to(tween, {
+						duration: 0.1,
+						time: 0,
+						ease: 'none',
+						overwrite: true,
+					});
 				});
 			});
 		}

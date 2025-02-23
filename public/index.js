@@ -116,11 +116,15 @@ startButton.style.pointerEvents = 'none';
 const microphoneCheckbox = document.getElementById('input-checkbox-microphone');
 const handleInputResponse = (e) => {
 	if (e.target.selectedIndex === 3) {
-		document.getElementById('input-checkbox-microphone').parentNode.style.display = 'none';
+		document.getElementById(
+			'input-checkbox-microphone',
+		).parentNode.style.display = 'none';
 		startButton.style.pointerEvents = 'visible';
 		startButton.style.opacity = '1';
 	} else {
-		document.getElementById('input-checkbox-microphone').parentNode.style.display = 'block';
+		document.getElementById(
+			'input-checkbox-microphone',
+		).parentNode.style.display = 'block';
 		if (!microphoneCheckbox.checked) {
 			startButton.style.pointerEvents = 'none';
 			startButton.style.opacity = '0.5';
@@ -148,7 +152,9 @@ document.querySelector('form').addEventListener('submit', (e) => {
 	// use existing data if available, else use form data
 	id = id ? id : document.getElementById('input-id').value;
 	culture = culture ? culture : document.getElementById('input-culture').value;
-	birthday = birthday ? birthday : document.getElementById('input-birthday').value;
+	birthday = birthday
+		? birthday
+		: document.getElementById('input-birthday').value;
 
 	// use mappings since otherwise you may run intro translation issues when localizing landing page
 	let genderIndex = '';
@@ -161,11 +167,15 @@ document.querySelector('form').addEventListener('submit', (e) => {
 	}
 	let datatransferIndex = '';
 	if (!datatransfer) {
-		datatransferIndex = document.getElementById('input-datatransfer').selectedIndex;
+		datatransferIndex =
+			document.getElementById('input-datatransfer').selectedIndex;
 	}
 
 	// mapping (key value lookup) for gender, input and datatransfer
-	const genderMapping = new Map().set(0, 'female').set(1, 'male').set(2, 'diverse');
+	const genderMapping = new Map()
+		.set(0, 'female')
+		.set(1, 'male')
+		.set(2, 'diverse');
 	const inputMapping = new Map()
 		.set(0, 'userchoice-audio')
 		.set(1, 'userchoice-text')
@@ -175,7 +185,9 @@ document.querySelector('form').addEventListener('submit', (e) => {
 
 	gender = gender ? gender : genderMapping.get(genderIndex);
 	input = input ? input : inputMapping.get(inputIndex);
-	datatransfer = datatransfer ? datatransfer : datatransferMapping.get(datatransferIndex);
+	datatransfer = datatransfer
+		? datatransfer
+		: datatransferMapping.get(datatransferIndex);
 
 	window.location.href = `${window.location.href}app.html?id=${id}&culture=${culture}&birthday=${birthday}&gender=${gender}&input=${input}&datatransfer=${datatransfer}&coupon=${coupon}&PROLIFIC_PID=${PROLIFIC_PID}`;
 	console.log(window.location.href);

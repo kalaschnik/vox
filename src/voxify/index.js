@@ -48,7 +48,10 @@ voxSvg = voxSvg.replace(/#image\d*/g, (match) => {
 });
 
 // fs.writeFile(path.resolve(__dirname, '../assets/experiment-voxified.svg'), stringify(svgDom));
-fs.writeFile(path.resolve(__dirname, '../assets/experiment-voxified.svg'), voxSvg);
+fs.writeFile(
+	path.resolve(__dirname, '../assets/experiment-voxified.svg'),
+	voxSvg,
+);
 
 console.log('------------------------------------------------------------');
 console.log('🦊 Voxified SVG file saved to assets/experiment-voxified.svg');

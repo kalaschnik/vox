@@ -1,15 +1,17 @@
 import { gsap } from 'gsap';
-import { SvgInHtml } from '../types';
+import type { SvgInHtml } from '../types';
 import Toastify from 'toastify-js';
 
 // promised based timeout
-export const sleep = (ms = 2000) => new Promise<number>((r) => setTimeout(r, ms));
+export const sleep = (ms = 2000) =>
+	new Promise<number>((r) => setTimeout(r, ms));
 
-export const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+export const isTouchDevice = () =>
+	'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 export const millisToMinutesAndSeconds = (millis: number) => {
-	var minutes = Math.floor(millis / 60000);
-	var seconds = Number(((millis % 60000) / 1000).toFixed(0));
+	const minutes = Math.floor(millis / 60000);
+	const seconds = Number(((millis % 60000) / 1000).toFixed(0));
 	// return { minutes: minutes, seconds: (seconds < 10 ? '0' : '') + seconds };
 	return { minutes, seconds };
 };
@@ -77,7 +79,11 @@ export const exitFullscreen = () => {
 	}
 };
 
-export const generateUserIdFilename = (prefix = 'matt', postfix = 'data', extension = 'json') => {
+export const generateUserIdFilename = (
+	prefix = 'matt',
+	postfix = 'data',
+	extension = 'json',
+) => {
 	const day = new Date().toISOString().slice(0, 10);
 	const time = new Date().toISOString().slice(11, 19).replaceAll(':', '-');
 	return `${prefix}-${data.id}-${day}-${time}-${postfix}.${extension}`;
@@ -94,7 +100,7 @@ export const downloadData = () => {
 
 export const uploadData = (
 	jsonData: {} = data,
-	id: string = generateUserIdFilename('matt', undefined)
+	id: string = generateUserIdFilename('matt', undefined),
 ) => {
 	fetch('./data/data.php', {
 		method: 'POST',
@@ -127,7 +133,7 @@ export const uploadData = (
 
 export const uploadAudio = (
 	blob: Blob,
-	id: string = generateUserIdFilename('matt', 'audio', 'ogg')
+	id: string = generateUserIdFilename('matt', 'audio', 'ogg'),
 ) => {
 	const formData = new FormData();
 	formData.append('file', blob, id);

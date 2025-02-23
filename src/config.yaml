@@ -15,30 +15,30 @@ css:
   # Syntax: [id^=startsWith][id$=endsWith]
   mousePointerObjects:
     [
-      "#link-si-speaker",
-      "[id^=link][id$=next]",
-      "[id^=link][id$=headphones]",
-      "[id^=link][id$=yes]",
-      "[id^=link][id$=no]",
+      '#link-si-speaker',
+      '[id^=link][id$=next]',
+      '[id^=link][id$=headphones]',
+      '[id^=link][id$=yes]',
+      '[id^=link][id$=no]',
     ]
   # will be used within the init process to to add a zoom animation on hover
   scaleOnHoverObjects:
     [
-      "#link-si-speaker",
-      "[id^=link][id$=next]",
-      "[id^=link][id$=headphones]",
-      "[id^=link][id$=yes]",
-      "[id^=link][id$=no]",
+      '#link-si-speaker',
+      '[id^=link][id$=next]',
+      '[id^=link][id$=headphones]',
+      '[id^=link][id$=yes]',
+      '[id^=link][id$=no]',
     ]
   pinda: # applies for pinda and neutral pinda videos
-    height: "30%" # pinda height
-    left: "0" # offset from left SVG edge, use 0 for none offset, otherwise px,%, etc. (e.g., '10px')
-    bottom: "0" # offset from bottom SVG edge, use 0 for none offset, otherwise px,%, etc. (e.g., '10px')
+    height: '30%' # pinda height
+    left: '0' # offset from left SVG edge, use 0 for none offset, otherwise px,%, etc. (e.g., '10px')
+    bottom: '0' # offset from bottom SVG edge, use 0 for none offset, otherwise px,%, etc. (e.g., '10px')
 
 globals:
   defaultSubjectId: demo
   defaultCulture: de-urban # possible keys from
-  defaultBirthday: "2100-01-01"
+  defaultBirthday: '2100-01-01'
   defaultCoupon: TESTCODE
   defaultPROLIFIC_PID: none
   adultThresholdAge: 12 # 11 = child, 12 = adult

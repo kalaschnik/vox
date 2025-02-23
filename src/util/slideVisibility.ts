@@ -1,4 +1,4 @@
-import { SvgInHtml } from '../types';
+import type { SvgInHtml } from '../types';
 import { gsap } from 'gsap';
 import config from '../config.yaml';
 
@@ -20,11 +20,13 @@ export const removeDisplayNone = () => {
 export const getChildrenFromParent = (parentId = 'svg') => {
 	const parent = document.getElementById(parentId) as SvgInHtml;
 	// remove the defs element from the array, since this is not defined within Illustrator
-	const childrenArray = [...parent.children].filter((element) => !(element.tagName === 'defs'));
+	const childrenArray = [...parent.children].filter(
+		(element) => !(element.tagName === 'defs'),
+	);
 	let childIds = childrenArray.map((e) => e.id);
 	if (childIds.filter((e) => e === '').length > 0) {
 		console.warn(
-			`IDs are missing in the first level of the SVG (see ${parentId}). Make sure those objects have an ID.`
+			`IDs are missing in the first level of the SVG (see ${parentId}). Make sure those objects have an ID.`,
 		);
 		childIds = childIds.filter(Boolean);
 	}
@@ -109,12 +111,20 @@ export const removeChildVisibiltyStyleAttribs = (parentSlide: string) => {
 export const swapSlides = (
 	visibleSlides?: string | string[],
 	hiddenSlides?: string | string[],
-	fadeDurations?: [number, number]
+	fadeDurations?: [number, number],
 ) => {
 	// if fadeDurations is missing and if in config slideTransition has override set to true
 	// ... apply the fadeOut/fadeIn from config
-	if (!fadeDurations && config.slideTransition.override && visibleSlides && hiddenSlides) {
-		fadeDurations = [config.slideTransition.fadeOut, config.slideTransition.fadeIn];
+	if (
+		!fadeDurations &&
+		config.slideTransition.override &&
+		visibleSlides &&
+		hiddenSlides
+	) {
+		fadeDurations = [
+			config.slideTransition.fadeOut,
+			config.slideTransition.fadeIn,
+		];
 	}
 
 	// if fadeDurations is undefined, we use the visibility attribute to hide and show slides
@@ -134,7 +144,8 @@ export const swapSlides = (
 			document.getElementById(e)!.setAttribute('visibility', 'hidden');
 		});
 
-		const slideToHide = typeof hiddenSlides === 'string' ? hiddenSlides : hiddenSlides[0];
+		const slideToHide =
+			typeof hiddenSlides === 'string' ? hiddenSlides : hiddenSlides[0];
 		removeChildVisibiltyStyleAttribs(slideToHide);
 		document.getElementById(slideToHide)!.setAttribute('visibility', 'hidden');
 		document.getElementById(slideToHide)!.removeAttribute('style');
@@ -142,10 +153,12 @@ export const swapSlides = (
 	// if fadeDurations is defined, we use GSAP to fade in and out between slides (using opacity)
 	if (fadeDurations && visibleSlides) {
 		// make sure to have a single string
-		const slideToShow = typeof visibleSlides === 'string' ? visibleSlides : visibleSlides[0];
+		const slideToShow =
+			typeof visibleSlides === 'string' ? visibleSlides : visibleSlides[0];
 		let slideToHide = '';
 		if (hiddenSlides) {
-			slideToHide = typeof hiddenSlides === 'string' ? hiddenSlides : hiddenSlides[0];
+			slideToHide =
+				typeof hiddenSlides === 'string' ? hiddenSlides : hiddenSlides[0];
 		}
 
 		// visibility hidden needs to be set always
@@ -153,7 +166,7 @@ export const swapSlides = (
 
 		const tl = gsap.timeline();
 
-		if (!!slideToHide) {
+		if (slideToHide) {
 			tl.to(`#${slideToHide}`, {
 				autoAlpha: 0,
 				duration: fadeDurations[0],
@@ -166,11 +179,15 @@ export const swapSlides = (
 			// clean-up DOM after animation
 			onComplete: () => {
 				// todo I may not need this anymore?
-				if (!!slideToHide) {
+				if (slideToHide) {
 					removeChildVisibiltyStyleAttribs(slideToHide);
-					document.getElementById(slideToHide)!.setAttribute('visibility', 'hidden');
+					document
+						.getElementById(slideToHide)!
+						.setAttribute('visibility', 'hidden');
 					document.getElementById(slideToHide)!.removeAttribute('style');
-					document.getElementById(slideToShow)!.setAttribute('visibility', 'visible');
+					document
+						.getElementById(slideToShow)!
+						.setAttribute('visibility', 'visible');
 				}
 			},
 		});

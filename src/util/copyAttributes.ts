@@ -38,7 +38,7 @@ export const copyAttributes = (
 	source: Element,
 	target: Element,
 	skip?: string[],
-	drop?: string[]
+	drop?: string[],
 ) => {
 	// get source attributes
 	const sourceAttributes = Array.from(source.attributes);
@@ -57,7 +57,7 @@ export const copyAttributes = (
 			className: 'toast-info',
 		}).showToast();
 		throw Error(
-			'You have defined elements in both skip and drop. This is not allowed!'
+			'You have defined elements in both skip and drop. This is not allowed!',
 		);
 	}
 

@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 import _ from 'lodash';
-import { SvgInHtml } from '../types';
+import type { SvgInHtml } from '../types';
 import svgPath from '../assets/experiment-voxified.svg';
 import config from '../config.yaml';
 import { rectToForeignObject } from './rectToForeignObject';
@@ -61,9 +61,7 @@ export const init = () => {
 	}
 
 	// parse SVG DOM for all child nodes from #svg group
-	const svgChilds: {
-		[key: string]: SVGImageElement | SVGGElement | Element;
-	} = {};
+	const svgChilds: Record<string, SVGImageElement | SVGGElement | Element> = {};
 	document.querySelectorAll('svg [id]').forEach((e) => {
 		svgChilds[e.id] = e;
 	});
@@ -72,7 +70,7 @@ export const init = () => {
 	if (document.querySelectorAll('[display="none"]').length > 0) {
 		console.warn(
 			'Found elements with \'display="none"\' attribute. Make sure all objects are visible when exporting the SVG.',
-			'Use removeDisplayNone(); to bypass this temporarily. Details:'
+			'Use removeDisplayNone(); to bypass this temporarily. Details:',
 		);
 		console.warn(document.querySelectorAll('[display="none"]'));
 		removeDisplayNone();
@@ -131,7 +129,7 @@ export const init = () => {
 
 	const translation = _.zipObject(
 		Object.keys(translations),
-		Object.values(translations).map((e) => e[data.culture])
+		Object.values(translations).map((e) => e[data.culture]),
 	);
 
 	// iterate over all text keys and add text into foreign objects
@@ -220,7 +218,11 @@ export const init = () => {
 	align-items: center;
 	backdrop-filter: blur(10px);"></div>`;
 
-	gsap.set('#link-ccp-orb', { transformOrigin: '50% 50%', scale: 0.5, filter: 'blur(5px)' });
+	gsap.set('#link-ccp-orb', {
+		transformOrigin: '50% 50%',
+		scale: 0.5,
+		filter: 'blur(5px)',
+	});
 	gsap.to('#link-ccp-orb', {
 		duration: 0.3,
 		rotation: 360,

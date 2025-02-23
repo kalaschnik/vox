@@ -5,7 +5,7 @@ import Toastify from 'toastify-js';
 export const widowedKeyChecker = () => {
 	// get all foreignObjects whose ids starts with 'text-'
 	const foreignObjectNodeList = document.querySelectorAll(
-		'foreignObject[id^="text-"]'
+		'foreignObject[id^="text-"]',
 	) as NodeListOf<SVGForeignObjectElement>;
 
 	// remove text- prefix and Illustrator hash
@@ -27,8 +27,14 @@ export const widowedKeyChecker = () => {
 	const translationKeys = Object.keys(translations);
 	console.log({ translationKeys, foreignObjectKeys });
 
-	const widowedTranslationKeys = _.difference(translationKeys, foreignObjectKeys);
-	const widowedForeignObjectKeys = _.difference(foreignObjectKeys, translationKeys);
+	const widowedTranslationKeys = _.difference(
+		translationKeys,
+		foreignObjectKeys,
+	);
+	const widowedForeignObjectKeys = _.difference(
+		foreignObjectKeys,
+		translationKeys,
+	);
 	const widowedKeys = [...widowedTranslationKeys, ...widowedForeignObjectKeys];
 
 	if (widowedKeys.length > 0) {
@@ -46,7 +52,7 @@ export const widowedKeyChecker = () => {
 		console.warn(
 			"You are using translation ids (keys) that don't have a matching counterpart in the SVG!",
 			'Present translation ids without matching SVG ids:',
-			widowedTranslationKeys
+			widowedTranslationKeys,
 		);
 	}
 
@@ -54,7 +60,7 @@ export const widowedKeyChecker = () => {
 		console.warn(
 			"You are using SVG ids that don't have a matching translation id!",
 			'Present SVG ids without matching translation ids:',
-			widowedForeignObjectKeys
+			widowedForeignObjectKeys,
 		);
 	}
 

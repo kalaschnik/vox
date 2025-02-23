@@ -9,7 +9,11 @@ export const playPromise = (url: string) => {
 	});
 };
 
-export const play = (url: string | string[], elementId?: string, once = false) => {
+export const play = (
+	url: string | string[],
+	elementId?: string,
+	once = false,
+) => {
 	const audio = document.getElementById('audio') as HTMLAudioElement;
 
 	// play audio sequentially
@@ -39,7 +43,7 @@ export const play = (url: string | string[], elementId?: string, once = false) =
 				audio.setAttribute('src', url);
 				audio.play();
 			},
-			{ once }
+			{ once },
 		);
 	} else {
 		audio.setAttribute('src', url);
@@ -71,5 +75,10 @@ export const getDuration = (url: string): Promise<number> =>
 	});
 
 export const isPlaying = (media: HTMLMediaElement) => {
-	return !!(media.currentTime > 0 && !media.paused && !media.ended && media.readyState > 2);
+	return !!(
+		media.currentTime > 0 &&
+		!media.paused &&
+		!media.ended &&
+		media.readyState > 2
+	);
 };

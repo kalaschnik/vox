@@ -2,7 +2,12 @@ import _ from 'lodash';
 import { gsap } from 'gsap';
 import config from '../config.yaml';
 import { stop } from '../util/audio';
-import { downloadData, millisToMinutesAndSeconds, sleep, uploadData } from '../util/helpers';
+import {
+	downloadData,
+	millisToMinutesAndSeconds,
+	sleep,
+	uploadData,
+} from '../util/helpers';
 
 export const procedure = async () => {
 	let currentProcedure = _.cloneDeep(config.procedure[data.culture]);
@@ -19,8 +24,8 @@ export const procedure = async () => {
 			const nkey = Object.keys(currentProcedure[ni])[0];
 
 			// check if nested object is nested again
-			const isNestedAgain: boolean = currentProcedure[ni][nkey].some((e: string) =>
-				_.isPlainObject(e)
+			const isNestedAgain: boolean = currentProcedure[ni][nkey].some(
+				(e: string) => _.isPlainObject(e),
 			);
 
 			// if nested object is nested again, get nested key(s)
@@ -29,7 +34,9 @@ export const procedure = async () => {
 				currentProcedure[ni][nkey] = _.shuffle(currentProcedure[ni][nkey]);
 
 				// get new nested key order
-				let nnkeys = currentProcedure[ni][nkey].map((e: string[]) => Object.keys(e)[0]) as string[];
+				let nnkeys = currentProcedure[ni][nkey].map(
+					(e: string[]) => Object.keys(e)[0],
+				) as string[];
 
 				// save shuffled order in data object
 				data[nkey] = nnkeys;
@@ -82,7 +89,9 @@ export const procedure = async () => {
 
 	// pinda video wrapper
 	const pinda = document.getElementById('pinda') as HTMLVideoElement;
-	const pindaNeutral = document.getElementById('pinda-neutral') as HTMLVideoElement;
+	const pindaNeutral = document.getElementById(
+		'pinda-neutral',
+	) as HTMLVideoElement;
 
 	// ================================================
 	// PROCEDURE LOOP
@@ -111,7 +120,7 @@ export const procedure = async () => {
 
 		// get possible response buttons (next buttons, yes/no buttons)
 		const responseButtons = document.querySelectorAll(
-			`#${currentSlideKc} [id^=link][id$=next], #${currentSlideKc} [id^=link][id$=yes], #${currentSlideKc} [id^=link][id$=no]`
+			`#${currentSlideKc} [id^=link][id$=next], #${currentSlideKc} [id^=link][id$=yes], #${currentSlideKc} [id^=link][id$=no]`,
 		);
 
 		// start time tracking
@@ -150,7 +159,7 @@ export const procedure = async () => {
 
 			// always hide div wrapper of text/audio feedback
 			const responseWrapper = document.querySelectorAll(
-				'div [id^=wrapper-s]'
+				'div [id^=wrapper-s]',
 			) as NodeListOf<HTMLDivElement>;
 			responseWrapper.forEach((e) => {
 				e.style.display = 'none';
@@ -161,7 +170,8 @@ export const procedure = async () => {
 		}
 	}
 	data.endingTimestamp = new Date();
-	data.experimentPaceRawMs = data.endingTimestamp.getTime() - data.initialTimestamp.getTime();
+	data.experimentPaceRawMs =
+		data.endingTimestamp.getTime() - data.initialTimestamp.getTime();
 	const minutes = millisToMinutesAndSeconds(data.experimentPaceRawMs).minutes;
 	const seconds = millisToMinutesAndSeconds(data.experimentPaceRawMs).seconds;
 	data.experimentPaceHr = `${minutes}-${seconds}`;
@@ -179,7 +189,7 @@ export const procedure = async () => {
 
 	console.group(
 		'%cStudy Summary',
-		'background-color: #e0005a ; color: #ffffff ; font-weight: bold ; padding: 4px ;'
+		'background-color: #e0005a ; color: #ffffff ; font-weight: bold ; padding: 4px ;',
 	);
 	console.log(`The study took ${minutes} minutes and ${seconds} seconds.`);
 	console.log('Here is what we stored:');

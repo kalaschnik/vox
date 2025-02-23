@@ -10,6 +10,7 @@
 		"clean": "rimraf dist",
 		"deploy": "npm run build && rsync -avu --chmod=a+rwx,o-w,ug+s,+t,u-s,-t dist/ ccp-odcJ:/srv/ccp-odc/matt/",
 		"lint": "eslint",
+		"prettier": "prettier --write \"**/*.{ts,js,json,yaml}\"",
 		"start": "webpack serve",
 		"voxify": "node src/voxify/"
 	},
@@ -30,7 +31,8 @@
 	},
 	"homepage": "https://github.com/kalaschnik/vox",
 	"prettier": {
-		"useTabs": true
+		"useTabs": true,
+		"singleQuote": true
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.21.0",

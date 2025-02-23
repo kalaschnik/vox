@@ -39,8 +39,10 @@ export const getUrlParameters = () => {
 			Toastify({
 				escapeMarkup: false,
 				text: `🌏 <strong>Culture not found.</strong> <small>Your given URL paramter was not found within procedure objects in config.yaml. You either need to define the procedure, or check your URL parameter for typos.<br><br><b>Possible values: ${Object.keys(
-					config.procedure
-				).join(', ')}<br>Redirected to: ${config.globals.defaultCulture}</small></b></small>`,
+					config.procedure,
+				).join(
+					', ',
+				)}<br>Redirected to: ${config.globals.defaultCulture}</small></b></small>`,
 				close: true,
 				className: 'toast-error',
 			}).showToast();
