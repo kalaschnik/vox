@@ -6,7 +6,7 @@ import config from '../config.yaml';
 import { rectToForeignObject } from './rectToForeignObject';
 import { recycleObjects } from './recycleObjects';
 import { copyAttributes } from './copyAttributes';
-import { downloadData, uploadData, uploadAudio, sleep } from './helpers';
+import { downloadData, uploadData, uploadAudio } from './helpers';
 import { getUrlParameters } from './getUrlParameters';
 import { widowedKeyChecker } from './widowedKeyChecker';
 import {
@@ -70,7 +70,7 @@ export const init = () => {
 	if (document.querySelectorAll('[display="none"]').length > 0) {
 		console.warn(
 			'Found elements with \'display="none"\' attribute. Make sure all objects are visible when exporting the SVG.',
-			'Use removeDisplayNone(); to bypass this temporarily. Details:',
+			'Use removeDisplayNone(); to bypass this temporarily. Details:'
 		);
 		console.warn(document.querySelectorAll('[display="none"]'));
 		removeDisplayNone();
@@ -129,7 +129,7 @@ export const init = () => {
 
 	const translation = _.zipObject(
 		Object.keys(translations),
-		Object.values(translations).map((e) => e[data.culture]),
+		Object.values(translations).map((e) => e[data.culture])
 	);
 
 	// iterate over all text keys and add text into foreign objects

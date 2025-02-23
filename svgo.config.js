@@ -1,4 +1,4 @@
-module.exports = {
+export default {
 	// don't load preset-default as this is to aggressive
 	// full list: https://github.com/svg/svgo#built-in-plugins
 	plugins: [

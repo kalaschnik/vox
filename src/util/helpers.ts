@@ -82,7 +82,7 @@ export const exitFullscreen = () => {
 export const generateUserIdFilename = (
 	prefix = 'matt',
 	postfix = 'data',
-	extension = 'json',
+	extension = 'json'
 ) => {
 	const day = new Date().toISOString().slice(0, 10);
 	const time = new Date().toISOString().slice(11, 19).replaceAll(':', '-');
@@ -99,8 +99,8 @@ export const downloadData = () => {
 };
 
 export const uploadData = (
-	jsonData: {} = data,
-	id: string = generateUserIdFilename('matt', undefined),
+	jsonData: any = data,
+	id: string = generateUserIdFilename('matt', undefined)
 ) => {
 	fetch('./data/data.php', {
 		method: 'POST',
@@ -133,7 +133,7 @@ export const uploadData = (
 
 export const uploadAudio = (
 	blob: Blob,
-	id: string = generateUserIdFilename('matt', 'audio', 'ogg'),
+	id: string = generateUserIdFilename('matt', 'audio', 'ogg')
 ) => {
 	const formData = new FormData();
 	formData.append('file', blob, id);

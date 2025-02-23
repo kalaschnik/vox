@@ -1,6 +1,6 @@
 import { gsap } from 'gsap';
 import { swapSlides } from '../util/slideVisibility';
-import { exitFullscreen, sleep } from '../util/helpers';
+import { exitFullscreen } from '../util/helpers';
 
 export default async ({ currentSlide, previousSlide }) => {
 	// swap slides automatically (don’t touch this)

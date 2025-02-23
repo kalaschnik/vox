@@ -47,8 +47,8 @@ const handleDate = (e) => {
 	} else {
 		age = calculateAge(Date.parse(e.target.value));
 	}
-	consentText = document.getElementById('consent');
-	consentCheckbox = document.getElementById('input-consent');
+	const consentText = document.getElementById('consent');
+	const consentCheckbox = document.getElementById('input-consent');
 	if (age < 12) {
 		consentText.style.display = 'none';
 		consentCheckbox.required = false;
@@ -101,6 +101,7 @@ if (datatransfer) {
 	datatransferElement.parentElement.style.display = 'none';
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const handleCheckbox = (e) => {
 	if (e.target.checked) {
 		// close modal going to #
@@ -114,16 +115,17 @@ const handleCheckbox = (e) => {
 const startButton = document.getElementById('start-button');
 startButton.style.pointerEvents = 'none';
 const microphoneCheckbox = document.getElementById('input-checkbox-microphone');
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const handleInputResponse = (e) => {
 	if (e.target.selectedIndex === 3) {
 		document.getElementById(
-			'input-checkbox-microphone',
+			'input-checkbox-microphone'
 		).parentNode.style.display = 'none';
 		startButton.style.pointerEvents = 'visible';
 		startButton.style.opacity = '1';
 	} else {
 		document.getElementById(
-			'input-checkbox-microphone',
+			'input-checkbox-microphone'
 		).parentNode.style.display = 'block';
 		if (!microphoneCheckbox.checked) {
 			startButton.style.pointerEvents = 'none';
@@ -135,12 +137,12 @@ const handleInputResponse = (e) => {
 microphoneCheckbox.parentNode.addEventListener('click', () => {
 	navigator.mediaDevices
 		.getUserMedia({ audio: true })
-		.then(function (stream) {
+		.then(function () {
 			microphoneCheckbox.checked = true;
 			startButton.style.pointerEvents = 'auto';
 			startButton.style.opacity = '1';
 		})
-		.catch(function (err) {
+		.catch(function () {
 			console.log('No mic for you!');
 		});
 });

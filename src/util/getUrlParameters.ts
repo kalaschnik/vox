@@ -3,7 +3,7 @@ import config from '../config.yaml';
 
 export const getUrlParameters = () => {
 	const urlParams = new URLSearchParams(window.location.search);
-	const params: { [key: string]: string } = {};
+	const params: Record<string, string> = {};
 	for (const [key, value] of urlParams) {
 		params[key] = value;
 	}
@@ -39,10 +39,10 @@ export const getUrlParameters = () => {
 			Toastify({
 				escapeMarkup: false,
 				text: `🌏 <strong>Culture not found.</strong> <small>Your given URL paramter was not found within procedure objects in config.yaml. You either need to define the procedure, or check your URL parameter for typos.<br><br><b>Possible values: ${Object.keys(
-					config.procedure,
-				).join(
-					', ',
-				)}<br>Redirected to: ${config.globals.defaultCulture}</small></b></small>`,
+					config.procedure
+				).join(', ')}<br>Redirected to: ${
+					config.globals.defaultCulture
+				}</small></b></small>`,
 				close: true,
 				className: 'toast-error',
 			}).showToast();
@@ -54,7 +54,7 @@ export const getUrlParameters = () => {
 
 	if (params.birthday) {
 		// exact regex for YYYY-MM-DD: https://stackoverflow.com/a/22061879/2258480
-		const yyyymmddRegex = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+		const yyyymmddRegex = /^\d{4}-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
 		if (!yyyymmddRegex.test(params.birthday)) {
 			Toastify({
 				escapeMarkup: false,

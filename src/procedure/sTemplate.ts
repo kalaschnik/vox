@@ -1,7 +1,5 @@
-import _ from 'lodash';
 import { play, playPromise } from '../util/audio';
 import { getResponse } from '../util/getResponse';
-import { sleep } from '../util/helpers';
 import { swapSlides } from '../util/slideVisibility';
 
 export default async ({ currentSlide, previousSlide }) => {

@@ -25,7 +25,7 @@ export const procedure = async () => {
 
 			// check if nested object is nested again
 			const isNestedAgain: boolean = currentProcedure[ni][nkey].some(
-				(e: string) => _.isPlainObject(e),
+				(e: string) => _.isPlainObject(e)
 			);
 
 			// if nested object is nested again, get nested key(s)
@@ -34,8 +34,8 @@ export const procedure = async () => {
 				currentProcedure[ni][nkey] = _.shuffle(currentProcedure[ni][nkey]);
 
 				// get new nested key order
-				let nnkeys = currentProcedure[ni][nkey].map(
-					(e: string[]) => Object.keys(e)[0],
+				const nnkeys = currentProcedure[ni][nkey].map(
+					(e: string[]) => Object.keys(e)[0]
 				) as string[];
 
 				// save shuffled order in data object
@@ -90,7 +90,7 @@ export const procedure = async () => {
 	// pinda video wrapper
 	const pinda = document.getElementById('pinda') as HTMLVideoElement;
 	const pindaNeutral = document.getElementById(
-		'pinda-neutral',
+		'pinda-neutral'
 	) as HTMLVideoElement;
 
 	// ================================================
@@ -120,7 +120,7 @@ export const procedure = async () => {
 
 		// get possible response buttons (next buttons, yes/no buttons)
 		const responseButtons = document.querySelectorAll(
-			`#${currentSlideKc} [id^=link][id$=next], #${currentSlideKc} [id^=link][id$=yes], #${currentSlideKc} [id^=link][id$=no]`,
+			`#${currentSlideKc} [id^=link][id$=next], #${currentSlideKc} [id^=link][id$=yes], #${currentSlideKc} [id^=link][id$=no]`
 		);
 
 		// start time tracking
@@ -159,7 +159,7 @@ export const procedure = async () => {
 
 			// always hide div wrapper of text/audio feedback
 			const responseWrapper = document.querySelectorAll(
-				'div [id^=wrapper-s]',
+				'div [id^=wrapper-s]'
 			) as NodeListOf<HTMLDivElement>;
 			responseWrapper.forEach((e) => {
 				e.style.display = 'none';
@@ -189,7 +189,7 @@ export const procedure = async () => {
 
 	console.group(
 		'%cStudy Summary',
-		'background-color: #e0005a ; color: #ffffff ; font-weight: bold ; padding: 4px ;',
+		'background-color: #e0005a ; color: #ffffff ; font-weight: bold ; padding: 4px ;'
 	);
 	console.log(`The study took ${minutes} minutes and ${seconds} seconds.`);
 	console.log('Here is what we stored:');

@@ -1,7 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { promises as fs } from 'fs';
-import { parse, stringify } from 'svgson';
+import { parse } from 'svgson';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -50,7 +50,7 @@ voxSvg = voxSvg.replace(/#image\d*/g, (match) => {
 // fs.writeFile(path.resolve(__dirname, '../assets/experiment-voxified.svg'), stringify(svgDom));
 fs.writeFile(
 	path.resolve(__dirname, '../assets/experiment-voxified.svg'),
-	voxSvg,
+	voxSvg
 );
 
 console.log('------------------------------------------------------------');

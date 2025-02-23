@@ -1,6 +1,4 @@
-const { PDFDocument, rgb, StandardFonts } = PDFLib;
-
-const button = document.getElementById('confirm-btn');
+import { PDFDocument, StandardFonts } from 'pdf-lib';
 const buttonDownload = document.getElementById('button-center-item');
 const coupon = new URL(document.location.href).searchParams.get('coupon');
 // add unique coupon code to pdf
@@ -14,7 +12,7 @@ async function createCoupon() {
 
 	// Embed the Helvetica font
 	const helveticaFont = await pdfDoc.embedFont(
-		StandardFonts.HelveticaBoldOblique,
+		StandardFonts.HelveticaBoldOblique
 	);
 
 	// Get the first page of the document
@@ -33,7 +31,7 @@ async function createCoupon() {
 	const pdfBytes = await pdfDoc.save();
 
 	// Trigger the browser to download the PDF document
-	download(pdfBytes, 'MPI_Gutschein.pdf', 'application/pdf');
+	globalThis.download(pdfBytes, 'MPI_Gutschein.pdf', 'application/pdf');
 }
 //-----------------------------------------------------
 
