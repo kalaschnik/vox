@@ -6,11 +6,12 @@
 	"type": "module",
 	"scripts": {
 		"alphaPinda": "cd character-animator && mkdir -p out && for i in *.mov; do ffmpeg -y -i \"$i\" -c:v libvpx-vp9 -b:v 500k -c:a libvorbis \"out/${i%.*}.webm\"; done && for i in *.mov; do avconvert --source \"$i\" --preset PresetHEVC1920x1080WithAlpha --verbose --replace --output \"out/${i%.*}.mov\"; done",
-		"voxify": "node src/voxify/",
-		"start": "webpack serve",
-		"clean": "rimraf dist",
 		"build": "npm run clean && NODE_ENV=production webpack",
-		"deploy": "npm run build && rsync -avu --chmod=a+rwx,o-w,ug+s,+t,u-s,-t dist/ ccp-odcJ:/srv/ccp-odc/matt/"
+		"clean": "rimraf dist",
+		"deploy": "npm run build && rsync -avu --chmod=a+rwx,o-w,ug+s,+t,u-s,-t dist/ ccp-odcJ:/srv/ccp-odc/matt/",
+		"lint": "eslint",
+		"start": "webpack serve",
+		"voxify": "node src/voxify/"
 	},
 	"repository": {
 		"type": "git",
