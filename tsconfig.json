@@ -31,5 +31,6 @@
 		/* Other options: */
 		"forceConsistentCasingInFileNames": true,
 		"noImplicitReturns": true
-	}
+	},
+	"exclude": ["./dist/**/*"]
 }

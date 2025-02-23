@@ -9,4 +9,12 @@ export default [
 	pluginJs.configs.recommended,
 	...tseslint.configs.recommended,
 	...tseslint.configs.stylistic,
+	...tseslint.config({
+		rules: {
+			'@typescript-eslint/no-explicit-any': 'off', // bad pattern but needed for custom.d.ts
+		},
+	}),
+	{
+		ignores: ['**/dist/*'],
+	},
 ];

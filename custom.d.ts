@@ -3,11 +3,6 @@ declare module '*.yaml' {
 	export default content;
 }
 
-declare module '*.md' {
-	const content: string;
-	export default content;
-}
-
 declare module '*.svg' {
 	const content: any;
 	export default content;
@@ -33,7 +28,7 @@ declare module '*.webm' {
 	export default content;
 }
 
-declare var data: {
+declare let data: {
 	id: string;
 	culture: string;
 	coupon: string;
@@ -44,7 +39,7 @@ declare var data: {
 	gender: 'female' | 'male' | 'other';
 	birthday: string;
 	age: number;
-	preFetchedVideoBlobs: Array<{ [key: string]: string } | { keep: boolean }>;
+	preFetchedVideoBlobs: (Record<string, string> | { keep: boolean })[];
 	pindaNeutralBlob: string;
 	textIntroBlob: string;
 	textIntroBlob2: string;
@@ -76,9 +71,7 @@ declare var data: {
 	animalSlideCounter: number;
 	rankingSlideCounter: number;
 	reasoningSlideCounter: number;
-	meta: {
-		[key: string]: string | boolean | number;
-	};
+	meta: Record<string, string | boolean | number>;
 	procedure: {
 		sIntroduction: {
 			duration: number;
