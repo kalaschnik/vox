@@ -1,11 +1,5 @@
-<img align="right" width="300" src="logo/matt-logo.svg">
+# VOX
 
-# MATT
-
-> **Moral Attitudes Study**  
-> A browser-based game that investigates  
-> **TODO**
->
 > **🚀 Demos:**
 >
 > - **https://ccp-eva.github.io/matt/**
@@ -15,36 +9,29 @@
 
 ---
 
-- [Study Overview](#study-overview)
-- [Development \& Customization](#development--customization)
-  - [Gettting started](#gettting-started)
-  - [URL Parameters](#url-parameters)
-  - [How To Add A New Culture](#how-to-add-a-new-culture)
-  - [How To Add New Slide](#how-to-add-new-slide)
-    - [❡ Adding Text](#-adding-text)
-    - [♲ Recycle/Reuse Objects](#-recyclereuse-objects)
-  - [Adobe Character Animator Workflow](#adobe-character-animator-workflow)
-  - [Global Objects](#global-objects)
-    - [`data`](#data)
-    - [`config`](#config)
-    - [`downloadData()`](#downloaddata)
-    - [`uploadData()`](#uploaddata)
-  - [Deploy to GitHub Staging Site](#deploy-to-github-staging-site)
-  - [Offline Usage](#offline-usage)
-  - [Deploy to MPI Server](#deploy-to-mpi-server)
-    - [Manual Steps](#manual-steps)
-- [Contributions](#contributions)
-  - [Voice-over Speakers](#voice-over-speakers)
-  - [Localization Translators](#localization-translators)
+- [VOX](#vox)
+  - [Development \& Customization](#development--customization)
+    - [Gettting started](#gettting-started)
+    - [URL Parameters](#url-parameters)
+    - [How To Add A New Culture](#how-to-add-a-new-culture)
+    - [How To Add New Slide](#how-to-add-new-slide)
+      - [❡ Adding Text](#-adding-text)
+      - [♲ Recycle/Reuse Objects](#-recyclereuse-objects)
+    - [Adobe Character Animator Workflow](#adobe-character-animator-workflow)
+    - [Global Objects](#global-objects)
+      - [`data`](#data)
+      - [`config`](#config)
+      - [`downloadData()`](#downloaddata)
+      - [`uploadData()`](#uploaddata)
+    - [Deploy to GitHub Staging Site](#deploy-to-github-staging-site)
+    - [Offline Usage](#offline-usage)
+    - [Deploy to MPI Server](#deploy-to-mpi-server)
+      - [Manual Steps](#manual-steps)
+  - [Contributions](#contributions)
+    - [Voice-over Speakers](#voice-over-speakers)
+    - [Localization Translators](#localization-translators)
 
 ---
-
-## Study Overview
-
-![](./docs/matt-landing-page-hero-image.svg) <p align="right"><sup><sub>inspired by [unDraw](https://undraw.co/illustrations)</sub></sup></p>
-
-- Link to prereg
-- ...
 
 ## Development & Customization
 
