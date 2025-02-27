@@ -92,7 +92,7 @@ Culture parameters are composed of a country code (i.e, [ISO 3166-1 alpha-2](htt
 
 1. Open Illustrator
 2. Create a new layer or copy another as a template
-3. If you have images follow the steps in: [#### ♲ Recycle/Reuse Objects]
+3. If you have images, that you want to reuse/recycle, follow the steps in: [#### ♲ Recycle/Reuse Objects]
 4. If have text follow the steps in: [...]
 5. Arrage the texts and objects to your needs
 6. When done, Make sure that all Layers are visible in Illustrator
@@ -107,7 +107,7 @@ Culture parameters are composed of a country code (i.e, [ISO 3166-1 alpha-2](htt
 
 11. Run `npm run voxify`
 12. Add the Illustrator layer name to config.yaml
-13. Create a new TypeScript file with the camelCased name of your Illustrator file within the procedure folder (e.g., my-slide become mySlide.ts). You can use the `sTemplate.ts` file as a template or even better: use a similar slide as template.
+13. Create a new TypeScript file with the camelCased name of your Illustrator layer within the procedure folder (e.g., my-slide become mySlide.ts). You can use the `sTemplate.ts` file as a template or even better: use a similar slide as template.
 14. For debuggin open DevTools: Cmd+Option+I
 15. Open `custom.d.ts` if you need to store new response data
 16. Response data is globally stored in `data` object within DevTools
