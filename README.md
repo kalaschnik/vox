@@ -52,7 +52,7 @@ The experiment consists of two components: (1) a **landing page** and (2) the **
 
 **The experiment** is located under `src` the root entry point is `app.ts`.
 
-If you build and deploy the web app. The landing page is: `yoururl.com/index.html`. By convention `index.html` can be omitted. That means going to `yoururl.com` will navigate you to the landing page. The experiment will be exposed via `yoururl.com/app.html`.
+If you build and deploy the web app, the landing page becomes: `yoururl.com/index.html`. By convention `index.html` can be omitted. That means going to `yoururl.com` will navigate you to the landing page. The experiment will be exposed via `yoururl.com/app.html`.
 
 **NOTES**
 
@@ -85,7 +85,7 @@ Culture parameters are composed of a country code (i.e, [ISO 3166-1 alpha-2](htt
 3. Copy and Paste another the audio and video folder from another culture into your new culture.
 4. Modify you audio and video files accordingly, keep files names to avoid coding adjustments
 5. Add translation keys into `translations.ts`
-6. Add the slider order in `config.yaml`
+6. Add the slide order in `config.yaml`
 7. Make sure to set the culture parameter, as it defaults to de-urban and not your new culture, unless you change it in config.yaml
 
 ### How To Add New Slide
@@ -116,7 +116,7 @@ Culture parameters are composed of a country code (i.e, [ISO 3166-1 alpha-2](htt
 #### ❡ Adding Text
 
 1. Create a new rectangle in Illustrator. Its size defines the bounding box of the text, yet not determines the text size. Text size can be controlled in CSS within `styles.css`. Give this rectangle a name prefixed with text- (e.g., `text-objectChoiceRandom`). Use camelCase, avoid numbers.
-2. Add a new key to all translation files within `src/cultures/xx-xx/translation.ts`. Use the identical id as defined prior in Illustrator, yet, without the prefix (e.g., `objectChoiceRandom`).  
+2. Add a new key to all translation files within `src/translation.ts`. Use the identical id as defined prior in Illustrator, yet, without the prefix (e.g., `objectChoiceRandom`).  
    The **value** should be a valid HTML text node (usually, you will use `<p>`, or `<h1>`, `<h2>`, etc.). For example:
 
 ```javascript
